@@ -1,31 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {Component} from 'react';
+import React from 'react';
+import CardList from './CardList'
+import SearchBox from './SearchBox'
+import {robots} from './robots'
 
-class App extends React.Component {
-  render() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p>
-        To get started, edit
-      </p>
-    </div>
-  );
-  }
+const state = {
+    robots: robots,
+    searchfield: ''
+}
+const App = () => {
+    return (
+        <div className='tc'>
+            <h1>Robofriends</h1>
+            <SearchBox/>
+            <CardList robots = {robots}/>
+        </div>
+
+    )
 }
 
 export default App;
+
