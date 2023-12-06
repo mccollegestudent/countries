@@ -13,8 +13,13 @@ class App extends Component {
         }    
     }
 
-    onSearchChange(event){ //want this func to trigger everytime there is a change
+    onSearchChange = (event) => { 
+        this.setState({searchfield: event.target.value})
         console.log(event.target.value);
+        const filteredRobots = this.state.robots.filter(robots => {
+            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        });
+        console.log(filteredRobots);
 
     }
 
