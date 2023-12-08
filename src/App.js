@@ -4,6 +4,8 @@ import SearchBox from './SearchBox'
 import {robots} from './robots'
 import './index.css';
 import './App.css';
+import Scroll from './Scroll';
+
 
 
 class App extends Component {
@@ -39,7 +41,11 @@ class App extends Component {
                 <div className='tc'>
                     <h1 className= 'f2'>Robofriends</h1>
                     <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange}/>
-                    <CardList robots = {filteredRobots}/>
+
+                    <Scroll>
+                        <CardList robots = {filteredRobots}/>
+                    </Scroll>
+
                 </div>
     
             )
