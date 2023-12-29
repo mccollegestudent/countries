@@ -5,21 +5,29 @@ import ErrorBoundary from '../components/ErrorBoundry';
 import '../index.css';
 import './App.css';
 import Scroll from '../components/Scroll';
+import FlagDisplay from '../containers/FlagDisplay';
 
 class App extends Component {
     constructor (){
         super()
         this.state = {
             robots: [],
-            searchfield: ''
+            searchfield: '',
+            countries:[]
         }    
     }
 
+    // componentDidMount(){
+    //     fetch('https://jsonplaceholder.typicode.com/users')
+    //         .then(response=>response.json())
+    //         .then(users=> {this.setState({robots: users})})
+    // }
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
             .then(response=>response.json())
-            .then(users=> {this.setState({robots: users})})
+            .then(county=> {this.setState({countries: county.data})})
     }
+
 
     onSearchChange = (event) => { 
         this.setState({searchfield: event.target.value})
@@ -27,23 +35,24 @@ class App extends Component {
     }
 
     render(){   
-        const {robots, searchfield} = this.state;
-        const filteredRobots = robots.filter(robot => {
-            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+        const {robots, searchfield, countries} = this.state;
+        const filteredCountries = countries.filter(country => {
+            return country.name.toLowerCase().includes(searchfield.toLowerCase());
          
         })
 
-        return (!robots.length) ?
+        return (!countries.length) ?
         <h1>Loading</h1> :
         (
+            
             <div className='tc'>
-                <h1 className= 'f2'>Robofriends</h1>
+                <h1 className= 'f2'>countries</h1>
                 <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange}/>
                 <Scroll>
                     <ErrorBoundary>
-                        <CardList robots = {filteredRobots}/>
+                    <CardList countries = {filteredCountries}/>
                     </ErrorBoundary>
-                    
+        
                 </Scroll>
 
             </div>
