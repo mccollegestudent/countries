@@ -1,17 +1,22 @@
 import React from 'react';  
 
-const SearchBox = ({searchfield, searchChange}) => {
+const SearchBox = ({searchChange, handleSelectChange}) => {
     return(
-        <div className='pa2' >  
+        <div className='pa2 ma4' >  
             <input
-                className='pa3 ba b--green bg-lightest-blue'
+                className='input-box pa3 ba b--blue bg-lightest-blue w-50 br4'
                 type='search'
-                placeholder='search robots'
+                placeholder='search country'
                 onChange={searchChange}
             />
+            <select 
+                className="ml2 pa3 ba b--orange bg-lightest-orange w-5 br3"
+                onChange={handleSelectChange}
+            >
+                    <option className="pa3" value="name">Search by Name</option>
+                    <option className="pa3" value="iso2">Search by ISO</option>
+            </select>
         </div>
     )
 }
 export default SearchBox;
-
-// using tachyons with this pa2

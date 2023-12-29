@@ -5,23 +5,17 @@ import ErrorBoundary from '../components/ErrorBoundry';
 import '../index.css';
 import './App.css';
 import Scroll from '../components/Scroll';
-import FlagDisplay from '../containers/FlagDisplay';
 
 class App extends Component {
     constructor (){
         super()
         this.state = {
-            robots: [],
             searchfield: '',
-            countries:[]
+            countries:[],
+            searchBy:''
         }    
     }
 
-    // componentDidMount(){
-    //     fetch('https://jsonplaceholder.typicode.com/users')
-    //         .then(response=>response.json())
-    //         .then(users=> {this.setState({robots: users})})
-    // }
     componentDidMount(){
         fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
             .then(response=>response.json())
@@ -34,10 +28,19 @@ class App extends Component {
 
     }
 
+    onSelectChange = (event) => {
+        this.setState({searchBy: event.target.value})
+    }
+
+
+
     render(){   
-        const {robots, searchfield, countries} = this.state;
+        const {searchfield, countries, searchBy} = this.state;
+        
         const filteredCountries = countries.filter(country => {
-            return country.name.toLowerCase().includes(searchfield.toLowerCase());
+            return (searchBy === 'name') ? 
+            country.name.toLowerCase().includes(searchfield.toLowerCase()):
+            country.iso2.toLowerCase().includes(searchfield.toLowerCase());
          
         })
 
@@ -47,10 +50,10 @@ class App extends Component {
             
             <div className='tc'>
                 <h1 className= 'f2'>countries</h1>
-                <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange}/>
+                <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
                 <Scroll>
                     <ErrorBoundary>
-                    <CardList countries = {filteredCountries}/>
+                        <CardList countries = {filteredCountries}/>
                     </ErrorBoundary>
         
                 </Scroll>
