@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import'tachyons'
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

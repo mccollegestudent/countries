@@ -5,6 +5,8 @@ import ErrorBoundary from '../components/ErrorBoundry';
 import '../index.css';
 import './App.css';
 import Scroll from '../components/Scroll';
+import CountryInfo from '../components/CountryInfo';
+
 
 class App extends Component {
     constructor (){
@@ -50,13 +52,14 @@ class App extends Component {
             
             <div className='tc'>
                 <h1 className= 'f2'>countries</h1>
-                <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
+                <CountryInfo/>
+                {/* <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
                 <Scroll>
                     <ErrorBoundary>
                         <CardList countries = {filteredCountries}/>
                     </ErrorBoundary>
         
-                </Scroll>
+                </Scroll> */}
 
             </div>
         )
