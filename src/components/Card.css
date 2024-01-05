@@ -1,0 +1,10 @@
+.card{
+    background-color: rgba(240, 207, 162, 0.39);
+}
+.card:hover{
+    background-color: rgba(255, 173, 79, 0.589);
+}
+
+h2, p {
+    color: rgb(252, 252, 252);
+}

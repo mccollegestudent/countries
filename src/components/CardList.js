@@ -1,19 +1,22 @@
 import React from 'react'
 import Card from './Card'
 
-const CardList = ({ countries }) => {
+const CardList = ({ countries, selectedCountry }) => {
+
+
   return (
     <div>
-      {countries.map((country, i) => (
+      {countries.map((c, i) => (
         <Card
           key={i}
-          iso2={country.iso2}
-          name={country.name}
-          flag={country.flag}
+          country ={c}
+          selectedCountry = {selectedCountry}
         />
       ))}
     </div>
   );
+
+
 };
 
 

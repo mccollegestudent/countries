@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import CardList from '../components/CardList'
 import SearchBox from '../components/SearchBox'
 import ErrorBoundary from '../components/ErrorBoundry';
@@ -14,30 +14,49 @@ class App extends Component {
         this.state = {
             searchfield: '',
             countries:[],
-            searchBy:''
+            searchBy:'name',
+            showCountryInfo: false,
+            selectedCountry: {}
         }    
     }
 
     componentDidMount(){
+        console.log('after errrorrr bb')
         fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
             .then(response=>response.json())
             .then(county=> {this.setState({countries: county.data})})
+            console.log('after errrorrrss')
     }
 
 
     onSearchChange = (event) => { 
-        this.setState({searchfield: event.target.value})
-
+        this.setState({searchfield: event.target.value});
     }
 
     onSelectChange = (event) => {
-        this.setState({searchBy: event.target.value})
+        this.setState({searchBy: event.target.value});
     }
 
+    onSelectedCountry = (value) => {
+        this.setState({selectedCountry: value});
+        console.log(`Clicked with value: ${value.name}`);
+        this.setState({ showCountryInfo: true});
+       
+    }
 
+    onMainPage = () => {
+        this.setState({ showCountryInfo: false});
+        this.setState({searchfield: ""});
+     
+    }
 
-    render(){   
-        const {searchfield, countries, searchBy} = this.state;
+    render(){  
+ 
+        const {searchfield, countries, searchBy, showCountryInfo, selectedCountry} = this.state;
+
+        if (showCountryInfo) {
+            return <CountryInfo country={selectedCountry} back={this.onMainPage} />;
+        }
         
         const filteredCountries = countries.filter(country => {
             return (searchBy === 'name') ? 
@@ -46,20 +65,20 @@ class App extends Component {
          
         })
 
+
         return (!countries.length) ?
         <h1>Loading</h1> :
         (
             
             <div className='tc'>
                 <h1 className= 'f2'>countries</h1>
-                <CountryInfo/>
-                {/* <SearchBox searchfield={this.searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
+                <SearchBox searchfield={searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
                 <Scroll>
                     <ErrorBoundary>
-                        <CardList countries = {filteredCountries}/>
+                        <CardList countries = {filteredCountries} selectedCountry={this.onSelectedCountry}/>
                     </ErrorBoundary>
         
-                </Scroll> */}
+                </Scroll>
 
             </div>
         )

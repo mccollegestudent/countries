@@ -10,7 +10,7 @@ const SearchBox = ({searchChange, handleSelectChange}) => {
                 onChange={searchChange}
             />
             <select 
-                className="ml2 pa3 ba b--orange bg-lightest-orange w-5 br3"
+                className="ml2 pa3 ba b--orange bg-lightest-orange w-5 br3 pointer"
                 onChange={handleSelectChange}
             >
                     <option className="pa3" value="name">Search by Name</option>
