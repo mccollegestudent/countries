@@ -9,13 +9,12 @@ const SimpleMap= ({country}) => {
     alignItems: 'center'
   };
   const countryName = (country.name.trim()).replace(/ /g, '+');
-
   return (
     
-    <div  className='tc' style={{width:"100%", height:'400px' }}>
+    <div  className='tc' style={{minWidth: '40%', height:'300px', alignItems: 'center', justifyContent: 'center' }}>
       <iframe
         title={`${country.name}`}
-        className="br2 grow" //h-auto w-auto 
+        className="br2 grow"  
         width='100%'
         height='100%'
         style={mapStyle}

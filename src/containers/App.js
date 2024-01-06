@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import CardList from '../components/CardList'
 import SearchBox from '../components/SearchBox'
 import ErrorBoundary from '../components/ErrorBoundry';
@@ -21,11 +21,9 @@ class App extends Component {
     }
 
     componentDidMount(){
-        console.log('after errrorrr bb')
         fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
             .then(response=>response.json())
             .then(county=> {this.setState({countries: county.data})})
-            console.log('after errrorrrss')
     }
 
 
@@ -39,7 +37,6 @@ class App extends Component {
 
     onSelectedCountry = (value) => {
         this.setState({selectedCountry: value});
-        console.log(`Clicked with value: ${value.name}`);
         this.setState({ showCountryInfo: true});
        
     }
