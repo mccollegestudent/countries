@@ -1,6 +1,34 @@
 ## Project Description
-Countries react app provides country names, flags and iso codes
-# Getting Started with Create React App
+# React Country Info App
+
+This React app provides detailed information about different countries, including population, geographical position, currency, capital, cities, and states. It consumes data from the Countries Now API for general information and Wikipedia API for additional details.
+
+## Features
+
+- Dynamic and interactive visualizations using Recharts.
+- Real-time population data for each country.
+- Geographical coordinates (latitude and longitude) for precise location information.
+- Comprehensive details about currencies, capital, cities, and states.
+- Integration with Wikipedia for in-depth knowledge.
+
+## Credits
+
+This project is inspired by and incorporates concepts from Andrei Neagoie and Mo Binni's "React - The Complete Guide (incl Hooks, React Router, Redux)" course on Udemy. Special thanks to these educators for their insights into React development.
+
+## Technologies Used
+
+- React
+- Recharts
+- Countries Now API
+- Wikipedia API
+
+## How to Run
+
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Run the app with `npm start`.
+
+Feel free to explore and contribute to enhance this project!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -11,8 +39,6 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
