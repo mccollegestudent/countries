@@ -22,10 +22,11 @@ const Card = ({ country, selectedCountry }) => {
       onClick={handleClick}
     >
         <img
-          src={!imageError ? country.flag : UnkownFlag}
+          // src={!imageError ? country.flag : UnkownFlag}
+          src={country.flag}
           alt='Flag Unavailable'
           style={{ maxWidth: '200px', maxHeight: '100px' }}
-          onError={handleError}
+          // onError={handleError}
         />
         <div>
           <h2>{country.name}</h2>

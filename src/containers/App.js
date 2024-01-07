@@ -8,6 +8,7 @@ import Scroll from '../components/Scroll';
 import CountryInfo from '../components/CountryInfo';
 
 
+
 class App extends Component {
     constructor (){
         super()
@@ -21,9 +22,15 @@ class App extends Component {
     }
 
     componentDidMount(){
-        fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
+        try{
+            fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
             .then(response=>response.json())
             .then(county=> {this.setState({countries: county.data})})
+        }catch {
+            console.log("Country data unavailable")
+
+        }
+
     }
 
 

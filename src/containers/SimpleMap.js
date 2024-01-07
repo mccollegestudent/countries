@@ -6,17 +6,17 @@ const SimpleMap= ({country}) => {
     borderRadius: '5px',
     display: 'flex', 
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    width:'100%',
+    height:'100%'
   };
   const countryName = (country.name.trim()).replace(/ /g, '+');
   return (
     
-    <div  className='tc' style={{minWidth: '40%', height:'300px', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{minWidth: '40%', height:'300px', alignItems: 'center', justifyContent: 'center' }}>
       <iframe
         title={`${country.name}`}
         className="br2 grow"  
-        width='100%'
-        height='100%'
         style={mapStyle}
         frameBorder="0"
         src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_API_KEY}&zoom=5&q=${countryName}`}
