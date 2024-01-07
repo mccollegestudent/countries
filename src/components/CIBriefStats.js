@@ -1,34 +1,32 @@
 import React from 'react';
+import { stdWikiSearch } from './EndpointsCountryData';
 
-const CIBriefStats = ({ location, currencies, capital, country }) => {
-  const handleTextClick = (name) => {
-    const wikipediaLink = `https://en.wikipedia.org/wiki/${name}`;
-    window.open(wikipediaLink, '_blank');
+const CIBriefStats = ({ location, currencies, capital }) => {
+  const handleTextClick = (query) => {
+    stdWikiSearch(query);
   };
 
-  const labelStyle = { color: 'white' };
-  const valueStyle = { color: 'orange' };
-  const divStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    cursor: 'pointer',
-  };
-
+  const isDataAvailable = location && currencies && capital;
   return (
-    <div className='fw7 bg-dark-blue br2 ' style={divStyle}> 
-      <p style={labelStyle}>
-        Long: <span style={valueStyle}>{location.long} </span> Lat: <span style={valueStyle}>{location.lat}</span>
-      </p>
-      <p style={labelStyle} onClick={() => handleTextClick(capital.capital)}>
-        Capital: <span style={valueStyle}>{capital.capital}</span>
-      </p>
-      <p style={labelStyle}>
-        Currencies: <span style={valueStyle}>{currencies.currency}</span>
-      </p>
+    <div className='fw7 bg-dark-blue br2 flex flex-column items-center justify-center w-100 h-100 pointer'>
+      {isDataAvailable ? (
+        <>
+          <p className='white'>
+            Long: <span className='yellow'>{location.long}</span> Lat: <span className='yellow'>{location.lat}</span>
+          </p>
+          <p className='white' onClick={() => handleTextClick(capital.capital)}>
+            Capital: <span className='yellow'>{capital.capital}</span>
+          </p>
+          <p className='white'>
+            Currencies: <span className='yellow'>{currencies.currency}</span>
+          </p>
+        </>
+      ) : (
+
+        <h1 className='tc flex items-center  justify-center ma3 br2 pa3' style={{ width: '90%', height: '500px' }}>
+           No data available
+         </h1>
+      )}
     </div>
   );
 };

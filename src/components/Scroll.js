@@ -2,9 +2,8 @@ import React from 'react';
 
 const Scroll = (props) => {
     return (
-        <div style={{overflowY: 'scroll', border: '0px solid black', height: '1050px'}}>
+        <div  className='shadow-hover focus-outline' style={{overflowY: 'scroll', padding:'40px', border: '0px solid black', height: '75vh', backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
             {props.children}
-
         </div>
     );
 

@@ -3,7 +3,7 @@
     font-family: 'Inred World Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Inred World Regular'), url('InredWorld.woff') format('woff');
+    src: local('Inred World Regular'), url('./assets/InredWorld.woff') format('woff');
     }
 
 h1{

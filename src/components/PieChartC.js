@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import {stdWikiSearch} from './EndpointsCountryData';
 
 class PieChartC extends PureComponent {
   constructor(props) {
@@ -50,9 +51,8 @@ class PieChartC extends PureComponent {
     );
   };
 
-  handleTextClick = (name) => {
-    const wikipediaLink = `https://en.wikipedia.org/wiki/${name}`;
-    window.open(wikipediaLink, '_blank');
+  handleTextClick = (query) => {
+    stdWikiSearch(query);
   };
 
   handleTextHover = (text) => {
@@ -64,7 +64,7 @@ class PieChartC extends PureComponent {
     try {
       const promises = this.state.states.map(async (city) => {
         const populationCounts = 1;
-        console.log(populationCounts);
+        // console.log(populationCounts);
 
         return {
           name: city.name,
@@ -100,45 +100,34 @@ class PieChartC extends PureComponent {
   }
 
   render() {
-    const { cityPop } = this.state;
+    const { cityPop,  states} = this.state;
 
-    const divStyle = {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
-      cursor: 'pointer',
-    };
-
-    if (cityPop.length === 0) {
-      console.log('Data is unavailable');
+    if (cityPop.length === 0 || states.length > 150) {
+      // console.log('Accurate Data is unavailable');
       return (
-        <h1 className={'tc flex items-center justify-center ma3 pa3'} style={{  width: '100%', height: '500px' }}>
+        <h1 className='tc flex items-center bg-navy justify-center ma3 br2 pa3' style={{ width: '90%', height: '500px' }}>
           No data available
         </h1>
       );
     }
-
+ 
     return (
-      <div style={divStyle}>
-                <ResponsiveContainer className='bg-navy pa3 br2' >
-                    <p style={{display: 'flex', justifyContent: 'center',  color: 'orange'}}>States</p>
-                    <h3 
-                      className={'bg-white flex items-center justify-center ma2 br4'} 
-                      style={{ width: '100%', height: '50px', textAlign: 'center'}}
-                      title='Click on state for info'
-                    >
-                        {this.state.hoveredText}
-                    </h3>
-                  <PieChart className={'pa4'} style={{maxHeight: '70vh'}}>
-                    <Pie className={'pa2'} data={cityPop} dataKey='value' cx='50%' cy='50%' innerRadius={30} outerRadius={100} fill='#82ca9d' label={this.CustomLabel} />
-                  </PieChart>
-              </ResponsiveContainer>
+      <div className='flex flex-column items-center justify-center w-100 h-100 pointer'>
+        <ResponsiveContainer className='bg-navy pa3 br2'>
+          <p className='tc ma2 pa2 yellow'> {"States / Provinces"}</p>
+          <h3
+            className='bg-white flex items-center justify-center ma2 br4'
+            style={{ width: '100%', height: '50px', textAlign: 'center' }}
+            title='Click on state for info'
+          >
+            {this.state.hoveredText}
+          </h3>
+          <PieChart className='pa4' style={{ maxHeight: '70vh' }}>
+            <Pie data={cityPop} dataKey='value' cx='50%' cy='50%' innerRadius={30} outerRadius={100} fill='#82ca9d' label={this.CustomLabel} />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
-
-    );
+    );    
   }
 }
 

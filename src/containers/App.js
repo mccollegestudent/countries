@@ -6,6 +6,9 @@ import '../index.css';
 import './App.css';
 import Scroll from '../components/Scroll';
 import CountryInfo from '../components/CountryInfo';
+import VideoBackground from '../components/VideoBackground';
+import Cultures from './assets/Cultures.mp4';
+
 
 
 
@@ -21,17 +24,32 @@ class App extends Component {
         }    
     }
 
-    componentDidMount(){
-        try{
-            fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
-            .then(response=>response.json())
-            .then(county=> {this.setState({countries: county.data})})
-        }catch {
-            console.log("Country data unavailable")
-
+    componentDidMount() {
+        try {
+          fetch('https://countriesnow.space/api/v0.1/countries/flag/unicode') //countries
+            .then(response => response.json())
+            .then(countryData => {
+              fetch('https://countriesnow.space/api/v0.1/countries/flag/images')//country flags
+                .then(response => response.json())
+                .then(flagData => {
+                  const updatedCountries = countryData.data.map(country => ({
+                    ...country,
+                    flag: flagData.data.find(flag => flag.name === country.name)?.flag || ''
+                  }));
+                  this.setState({ countries: updatedCountries });
+                })
+                .catch(error => {
+                //   console.error('Error fetching country flag urls', error);
+                });
+            })
+            .catch(error => {
+            //   console.error('Error fetching countries', error);
+            });
+        } catch (error) {
+          console.log("Country Profile Data");
         }
-
-    }
+      }
+      
 
 
     onSearchChange = (event) => { 
@@ -69,22 +87,20 @@ class App extends Component {
          
         })
 
-
         return (!countries.length) ?
         <h1>Loading</h1> :
         (
-            
-            <div className='tc'>
-                <h1 className= 'f2'>countries</h1>
-                <SearchBox searchfield={searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
-                <Scroll>
-                    <ErrorBoundary>
-                        <CardList countries = {filteredCountries} selectedCountry={this.onSelectedCountry}/>
-                    </ErrorBoundary>
-        
-                </Scroll>
-
-            </div>
+            <VideoBackground videoSource={Cultures}>   
+                <div className='tc'>
+                    <h1 className= 'items-start f2 bg-navy pa2 o-90 shadow-hover focus-outline'>countries</h1>
+                    <SearchBox searchfield={searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
+                    <Scroll>
+                        <ErrorBoundary>
+                            <CardList countries = {filteredCountries} selectedCountry={this.onSelectedCountry}/>
+                        </ErrorBoundary>
+                    </Scroll>                                                       
+                </div>
+            </VideoBackground>          
         )
 
     }

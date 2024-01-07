@@ -1,12 +1,37 @@
 import { useEffect, useState } from 'react';
-const EndpointsCountryData = (country) => {
-  const countryName = country.name;
 
+export const stdWikiSearch = (query) => {
+  const wikipediaLink = `https://en.wikipedia.org/wiki/${query}`;
+  window.open(wikipediaLink, '_blank');
+};
+
+export const EndpointFlagUrl = (countryName) => {
+  const [flagUrl, setflagUrl] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const flagUrlResponse = await fetch(`https://countriesnow.space/api/v0.1/countries/flag/images/q?country=${countryName}`);
+        const flagUrlData = await flagUrlResponse.json();
+        setflagUrl(flagUrlData.data.flag);
+      } catch (error) {
+        console.error('Error fetching flag data', error);
+      }
+    };
+
+    fetchData();
+  });
+
+  return {
+    flagUrl
+  }
+}
+
+export const EndpointsCountryData = (country) => {
+  const countryName = country.name;
   const [population, setPopulation] = useState([]);
   const [location, setLocation] = useState({});
   const [currencies, setCurrencies] = useState({});
   const [capital, setCapital] = useState({});
-  const [cities, setCities] = useState([]);
   const [states, setStates] = useState([]);
   const [wikiSearchData, setWikiSearchData] = useState([]);
 
@@ -45,17 +70,11 @@ const EndpointsCountryData = (country) => {
       }
 
       try {
-        const citiesResponse = await fetch(`https://countriesnow.space/api/v0.1/countries/cities/q?country=${countryName}`);
-        const citiesData = await citiesResponse.json();
-        setCities(citiesData.data);
-      } catch (error) {
-        console.error('Error fetching cities data', error);
-      }
-
-      try {
         const statesResponse = await fetch(`https://countriesnow.space/api/v0.1/countries/states/q?country=${countryName}`);
         const statesData = await statesResponse.json();
+
         setStates(statesData.data.states);
+        
       } catch (error) {
         console.error('Error fetching states data', error);
       }
@@ -72,17 +91,16 @@ const EndpointsCountryData = (country) => {
     };
 
     fetchData();
-  }, [countryName]);
+  });
 
   return {
     population,
     location,
     currencies,
     capital,
-    cities,
     states,
     wikiSearchData
   };
 };
 
-export default EndpointsCountryData;
+

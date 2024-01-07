@@ -11,12 +11,12 @@ const CIBriefInfo = ({country,  wikiSearchData}) => {
             <div>
                 <p className='min-w-20 max-w-20 fw9 light-red pa3' dangerouslySetInnerHTML={{ __html: firstEntry.snippet }}></p>
                 <a
-                className='tc flex justify-center dark-orange bg-yellow grow growoutline w-25 pa3 ml3'
-                href={`https://en.wikipedia.org/?curid=${firstEntry.pageid}`}
-                target='__blank'
-                rel='nofollow'
-                >
-                Read More
+                    className='tc flex justify-center dark-orange bg-yellow grow growoutline w-25 pa3 ml3'
+                    href={`https://en.wikipedia.org/?curid=${firstEntry.pageid}`}
+                    target='__blank'
+                    rel='nofollow'
+                    >
+                    Read More
                 </a>
             </div>
             ) : (
