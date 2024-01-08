@@ -24,7 +24,7 @@ class PieChartC extends PureComponent {
       return null;
     }
 
-    const radius = innerRadius + (outerRadius - innerRadius) * 2.5;
+    const radius = innerRadius + (outerRadius - innerRadius) * 2.3;
     const angle = -midAngle + 90; 
     const x = cx + radius * Math.cos(angle * (Math.PI / 180));
     const y = cy + radius * Math.sin(angle * (Math.PI / 180));
@@ -122,7 +122,7 @@ class PieChartC extends PureComponent {
           >
             {this.state.hoveredText}
           </h3>
-          <PieChart className='pa4' style={{ maxHeight: '70vh' }}>
+          <PieChart className='pa1' style={{ maxHeight: '70vh' }}>
             <Pie data={cityPop} dataKey='value' cx='50%' cy='50%' innerRadius={30} outerRadius={100} fill='#82ca9d' label={this.CustomLabel} />
           </PieChart>
         </ResponsiveContainer>

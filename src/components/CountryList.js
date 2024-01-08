@@ -1,12 +1,12 @@
 import React from 'react';
-import Card from './Card';
+import Country from './Country';
 
-const CardList = ({ countries, selectedCountry }) => {
+const CountryList = ({ countries, selectedCountry }) => {
   return (
     <div>
       {countries.map((c, i) => {
         return (
-          <Card
+          <Country
             key={i}
             country={c}
             selectedCountry={selectedCountry}
@@ -17,4 +17,4 @@ const CardList = ({ countries, selectedCountry }) => {
   );
 };
 
-export default CardList;
+export default CountryList;

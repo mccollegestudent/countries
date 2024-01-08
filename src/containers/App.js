@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CardList from '../components/CardList'
+import CountryList from '../components/CountryList'
 import SearchBox from '../components/SearchBox'
 import ErrorBoundary from '../components/ErrorBoundry';
 import '../index.css';
@@ -96,7 +96,7 @@ class App extends Component {
                     <SearchBox searchfield={searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
                     <Scroll>
                         <ErrorBoundary>
-                            <CardList countries = {filteredCountries} selectedCountry={this.onSelectedCountry}/>
+                            <CountryList countries = {filteredCountries} selectedCountry={this.onSelectedCountry}/>
                         </ErrorBoundary>
                     </Scroll>                                                       
                 </div>
