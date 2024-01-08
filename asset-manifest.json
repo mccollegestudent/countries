@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/countries%20%20/static/css/main.845dc480.css",
+    "main.js": "/countries%20%20/static/js/main.e8745781.js",
+    "static/js/787.640766c3.chunk.js": "/countries%20%20/static/js/787.640766c3.chunk.js",
+    "static/media/Cultures.mp4": "/countries%20%20/static/media/Cultures.c29d40dbf0a1a7ebd519.mp4",
+    "static/media/InredWorld.woff": "/countries%20%20/static/media/InredWorld.be1f0c81e8ec63cc3aee.woff",
+    "index.html": "/countries%20%20/index.html",
+    "main.845dc480.css.map": "/countries%20%20/static/css/main.845dc480.css.map",
+    "main.e8745781.js.map": "/countries%20%20/static/js/main.e8745781.js.map",
+    "787.640766c3.chunk.js.map": "/countries%20%20/static/js/787.640766c3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.845dc480.css",
+    "static/js/main.e8745781.js"
+  ]
+}
