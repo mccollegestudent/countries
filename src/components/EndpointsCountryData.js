@@ -19,7 +19,7 @@ export const EndpointFlagUrl = (countryName) => {
     };
 
     fetchData();
-  });
+  },[]);
 
   return {
     flagUrl
@@ -91,7 +91,7 @@ export const EndpointsCountryData = (country) => {
     };
 
     fetchData();
-  });
+  },[]);
 
   return {
     population,
