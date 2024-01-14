@@ -22,14 +22,14 @@ const CountryInfo = ({country, back}) => {
                     <CIBriefInfo country={country}  wikiSearchData={ wikiSearchData}/>
                     <CInfoFlag flag={country.flag}/>
                 </div>
-                <div  className='flex flex-column flex-row-l ma3 min-w-50' > 
-                    <SimpleMap country = {country}/>
+                <div  className='flex flex-column flex-row-l ma3 min-w-50 items-center justify-center' > 
+                    {/* <SimpleMap country = {country}/> */}
+                    <CIBriefStats country={country} location={location} currencies={currencies} capital={capital} states={states} />        
                     <CIPopulationGraph  population={ population} />  
         
                 </div>
             </div>
-            <div className='flex flex-column flex-row-l ma2 pa2 vh-100 br2 shadow-hover focus-outline'>
-                <CIBriefStats country={country} location={location} currencies={currencies} capital={capital} states={states} />
+            <div className='flex flex-column flex-row-l ma2 pa2 vh-100 br2 shadow-hover focus-outline'>      
                 <PieChartC country={country} states={states} />
             </div>
         </div>

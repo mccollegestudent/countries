@@ -8,7 +8,7 @@ const CIBriefStats = ({ location, currencies, capital }) => {
 
   const isDataAvailable = location && currencies && capital;
   return (
-    <div className='fw7 bg-dark-blue br2 flex flex-column items-center justify-center w-100 h-100 pointer'>
+<div className='h-100 w-100 fw7 bg-dark-blue br2 flex flex-column items-center justify-center pointer'>
       {isDataAvailable ? (
         <>
           <p className='white'>
