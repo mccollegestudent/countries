@@ -8,7 +8,7 @@ const CIBriefStats = ({ location, currencies, capital }) => {
 
   const isDataAvailable = location && currencies && capital;
   return (
-<div className='h-100 w-100 fw7 bg-dark-blue br2 flex flex-column items-center justify-center pointer'>
+<div className='h-100 w-100 fw7 bg-dark-blue br2 flex flex-column items-center justify-center pointer shadow-hover'>
       {isDataAvailable ? (
         <>
           <p className='white'>
@@ -23,7 +23,7 @@ const CIBriefStats = ({ location, currencies, capital }) => {
         </>
       ) : (
 
-        <h1 className='tc flex items-center  justify-center ma3 br2 pa3' style={{ width: '90%', height: '500px' }}>
+        <h1 className='tc flex items-center justify-center ma3 br2 pa3' style={{ width: '90%', height: '100%' }}>
            No data available
          </h1>
       )}

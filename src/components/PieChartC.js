@@ -105,7 +105,7 @@ class PieChartC extends PureComponent {
     if (cityPop.length === 0 || states.length > 150) {
       // console.log('Accurate Data is unavailable');
       return (
-        <h1 className='tc flex items-center bg-navy justify-center ma3 br2 pa3' style={{ width: '90%', height: '500px' }}>
+        <h1 className='tc flex items-center bg-navy justify-center ma3 br2 pa3 w-100 h-100 pointer'>
           No data available
         </h1>
       );

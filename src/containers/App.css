@@ -11,6 +11,11 @@ h1{
     font-weight: 200;
     color: #0ccac4;
 }
+h1.country-name-text:hover{
+
+    color: #e22bb7; 
+    text-shadow: 0 0 10px rgba(238, 11, 250, 0.8);
+  }
 
 .bg-navyC{
     background-color: navy;
