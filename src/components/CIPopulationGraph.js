@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 const CIPopulationGraph = ({ population}) => {
     return(
-        <div className='tc ma2 pa3 white bg-black o-75 br3 shadow-hover focus-outline' style={{minWidth: '60%', height:'250px', alignItems: 'center', justifyContent: 'center' }}>
+        <div className='tc ma1 pa3 white bg-black o-75 br2 shadow-hover focus-outline' style={{minWidth: '70%', height:'270px', alignItems: 'center', justifyContent: 'center' }}>
             <h2>Population</h2>
             <ResponsiveContainer>
                 <LineChart

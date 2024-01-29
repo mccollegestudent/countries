@@ -11,9 +11,8 @@ This React app provides detailed information about different countries, includin
 - Comprehensive details about currencies, capital, cities, and states.
 - Integration with Wikipedia for in-depth knowledge.
 
-## Credits
-
-This project is inspired by and incorporates concepts from Andrei Neagoie and Mo Binni's "React - The Complete Guide (incl Hooks, React Router, Redux)" course on Udemy. Special thanks to these educators for their insights into React development.
+## Demo
+https://mccollegestudent.github.io/countries/
 
 ## Technologies Used
 
@@ -21,6 +20,11 @@ This project is inspired by and incorporates concepts from Andrei Neagoie and Mo
 - Recharts
 - Countries Now API
 - Wikipedia API
+
+## Credits
+
+This project is inspired by and incorporates concepts from Andrei Neagoie and Mo Binni's "React - The Complete Guide (incl Hooks, React Router, Redux)" course on Udemy. Special thanks to these educators for their insights into React development.
+
 
 ## How to Run
 

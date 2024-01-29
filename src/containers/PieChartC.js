@@ -64,7 +64,6 @@ class PieChartC extends PureComponent {
     try {
       const promises = this.state.states.map(async (city) => {
         const populationCounts = 1;
-        // console.log(populationCounts);
 
         return {
           name: city.name,
@@ -103,9 +102,8 @@ class PieChartC extends PureComponent {
     const { cityPop,  states} = this.state;
 
     if (cityPop.length === 0 || states.length > 150) {
-      // console.log('Accurate Data is unavailable');
       return (
-        <h1 className='tc flex items-center bg-navy justify-center ma3 br2 pa3 w-100 h-100 pointer'>
+        <h1 className='tc flex items-center bg-navy justify-center ma1 br2 pa1 w-100 h-100 pointer'>
           No data available
         </h1>
       );
