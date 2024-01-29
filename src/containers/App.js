@@ -7,7 +7,7 @@ import './App.css';
 import Scroll from '../components/Scroll';
 import CountryInfo from '../components/CountryInfo';
 import VideoBackground from '../components/VideoBackground';
-import Cultures from './assets/Cultures.mp4';
+import BGVideo from './assets/WorldMapBG.mp4';
 
 
 
@@ -90,7 +90,7 @@ class App extends Component {
         return (!countries.length) ?
         <h1>Loading</h1> :
         (
-            <VideoBackground videoSource={Cultures}>   
+            <VideoBackground videoSource={BGVideo}>   
                 <div className='tc'>
                     <h1 className= 'items-start f2 bg-navy pa2 o-90 shadow-hover focus-outline'>countries</h1>
                     <SearchBox searchfield={searchfield} searchChange={this.onSearchChange} handleSelectChange={this.onSelectChange}/>
